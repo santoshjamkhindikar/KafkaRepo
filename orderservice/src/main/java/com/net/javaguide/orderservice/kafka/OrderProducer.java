@@ -16,15 +16,10 @@ import org.springframework.stereotype.Service;
 public class OrderProducer {
 
     private static final Logger logger = LoggerFactory.getLogger(OrderProducer.class);
-
+    @Autowired
     private NewTopic topic;
-
+    @Autowired
     private KafkaTemplate<String, OrderEvent> kafkaTemplate;
-
-    public OrderProducer(NewTopic topic, KafkaTemplate<String, OrderEvent> kafkaTemplate) {
-        this.topic = topic;
-        this.kafkaTemplate = kafkaTemplate;
-    }
 
     public void sendMessages(OrderEvent orderEvent) {
         logger.info("OrderProducer: Message sent successfully : "+orderEvent);
